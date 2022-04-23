@@ -1,0 +1,192 @@
+@font-face {
+    font-family: 'Raleway';
+    src: url('./font/Raleway.ttf');
+}
+
+$boxShadow :-1px -1px 3px #282828, 1.5px 1.5px 3px rgba(174, 174, 192, 0.4);
+$innerShadow : inset -5px -5px 4px rgba(86, 86, 86, 0.25), inset 2px 4px 4px rgba(0, 0, 0, 0.25);;
+
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    // background-color: #1D1D1D;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Raleway';
+    font-size: 13px;
+    background: url(../img/bg.png) no-repeat #1D1D1D center ;
+    
+}
+
+.element{
+    width: 250px;
+    height: 300px;
+    position: relative;
+    color: #999;
+    
+    &__front{
+        width: 100%;
+        height: 100%;
+   
+        transition: all .5s ease;
+       
+        border-radius: 1em;
+        padding: .5em;
+        background: #1D1D1D;
+        box-shadow: $boxShadow;
+        .profile-box{
+            display: flex;
+            padding: 1em;
+            align-items: center;
+            border-radius: 1em;
+            transition: 1s ease;
+            box-shadow: $innerShadow;
+            
+            &-img{
+                width: 4em;
+                height: 4em;
+                border-radius: 50%;
+                margin-right: 1em;
+                box-shadow: $boxShadow;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                }
+               
+            }
+
+           &__detail{
+               &-name{
+                   font-weight: bold;
+                   font-size: 1.2em;
+                   margin-bottom: .5em;
+                   font-family: 'Raleway', sans-serif;
+               }
+
+               &-position{
+                   color: #444;
+                   padding-top: 1em;
+                   font-size: .9em;
+               }
+           }
+        }
+
+        &-content{
+            text-align: left;
+            padding: 1em;
+        }
+    }
+
+    &:hover{
+        .element__front{
+            opacity: 0;
+            // transform: translateX(-400px) rotate(720deg);
+        }
+
+        .profile-box{
+            transform: translateY(-100px) rotate(25deg);
+        }
+
+        .element__back{
+            transform: translateY(0) rotate(0);
+            opacity: 1;
+        }
+
+
+        .element__back::before{
+            top: 30px;
+            bottom: 30px;
+        }
+
+        .element__back::after{
+            right: 30px;
+            left: 30px;
+        }
+
+        .element__back__content{
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    &__back{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        opacity: 0;
+        z-index: -2;
+        box-sizing : border-box;
+        transform: translateY(-100px) rotate(25deg);
+        transition: 1s ease;
+        background: #1D1D1D;
+        box-shadow: $boxShadow;
+        border-radius: 1em;
+        padding: 1em;
+        &::before{
+            position: absolute;
+            content: '';
+            border-right: 2px solid white;
+            border-left: 2px solid white;
+            top: 200px;
+            bottom: 200px;
+            right: 10px;
+            left: 10px;
+            transition: all 1s ease;
+        }
+
+        &::after{
+            position: absolute;
+            content: '';
+            border-top: 2px solid white;
+            border-bottom: 2px solid white;
+            top: 10px;
+            bottom: 10px;
+            right: 150px;
+            left: 150px;
+            transition: all 1s ease;
+        }
+
+        &__content{
+            transform: translateX(-50px);
+            opacity: 0;
+            transition:  all 1s ease;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            padding: 1em;
+            font-size: .9em;
+
+            &-title{
+                font-weight: bold;
+            }
+            
+            &-description{
+                margin: 20px 0;
+                display: flex;
+            }
+            
+        }
+    }
+}
+
+
+
+
+
